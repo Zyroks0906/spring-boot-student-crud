@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(java -version 2>&1)",
+      "PowerShell($env:JAVA_HOME)",
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\\" | Where-Object { $_.Name -match \"java|jdk|jre|adoptium|temurin|liberica|corretto|zulu\" -or $_.Name -match \"Java\" } | Select-Object Name, FullName)",
+      "PowerShell($proc = Get-NetTCPConnection -LocalPort 8080 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -First 1; if \\($proc\\) { Stop-Process -Id $proc -Force; \"Proceso $proc terminado\" } else { \"Puerto 8080 libre\" })",
+      "PowerShell(Add-Type -Assembly System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\(\"$env:USERPROFILE\\\\.m2\\\\repository\\\\org\\\\springframework\\\\boot\\\\spring-boot-test-autoconfigure\\\\4.0.6\\\\spring-boot-test-autoconfigure-4.0.6.jar\"\\); $zip.Entries | Select-Object FullName; $zip.Dispose\\(\\))",
+      "Bash(jar tf *)",
+      "PowerShell(gh --version 2>&1)",
+      "PowerShell(winget install --id GitHub.cli --silent --accept-package-agreements --accept-source-agreements 2>&1)"
+    ]
+  }
+}
